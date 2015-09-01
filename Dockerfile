@@ -36,7 +36,6 @@ ADD ./patches/usr/ /usr/
 # Configure autostart packages
 RUN rc-update add sshd default\
  && rc-update add ssh-keys default \
- && rc-update add hostname default \
  && rc-update add ntpd default \
  && rc-update add sysctl default \
  && rc-update add initramfs-shutdown shutdown \
