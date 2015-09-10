@@ -7,8 +7,9 @@ DESCRIPTION =		Alpine Linux
 SOURCE_URL =		https://github.com/scaleway/image-alpine
 SHELL =			/bin/bash
 
-
-all: help
+IMAGE_VOLUME_SIZE =	50G
+IMAGE_BOOTSCRIPT =	stable
+IMAGE_NAME =		Alpine Linux 3.2
 
 
 ##
