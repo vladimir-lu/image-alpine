@@ -1,11 +1,9 @@
-DOCKER_NAMESPACE =	armbuild/
-NAME =			scw-distrib-alpine
+NAME =			alpine
 VERSION =		latest
 VERSION_ALIASES =	3.2.0 3.2 3 edge
 TITLE =			Alpine Linux
 DESCRIPTION =		Alpine Linux
 SOURCE_URL =		https://github.com/scaleway/image-alpine
-SHELL =			/bin/bash
 
 IMAGE_VOLUME_SIZE =	50G
 IMAGE_BOOTSCRIPT =	stable

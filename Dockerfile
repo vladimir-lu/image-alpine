@@ -1,10 +1,10 @@
-## -*- docker-image-name: "armbuild/scw-distrib-alpine:latest" -*-
+## -*- docker-image-name: "scaleway/alpine:latest" -*-
 FROM armbuild/alpine:3.2.0
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
 # Environment
-ENV SCW_BASE_IMAGE armbuild/scw-alpine:latest
+ENV SCW_BASE_IMAGE scaleway/alpine:latest
 
 
 # Add cross-build binaries
