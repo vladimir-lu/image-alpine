@@ -1,5 +1,7 @@
-Alpine Linux image on Scaleway [![Build Status](https://travis-ci.org/scaleway/image-alpine.svg?branch=master)](https://travis-ci.org/scaleway/image-alpine)
-==============================
+# Alpine Linux image on Scaleway
+
+[![Build Status](https://travis-ci.org/scaleway/image-alpine.svg?branch=master)](https://travis-ci.org/scaleway/image-alpine)
+[![](https://badge.imagelayers.io/scaleway/alpine:latest.svg)](https://imagelayers.io/?images=scaleway/alpine:latest 'Get your own badge on imagelayers.io')
 
 Scripts to build the official Alpine image on Scaleway
 
@@ -17,8 +19,7 @@ We use the Docker's building system and convert it at the end to a disk image th
 
 ---
 
-Install
--------
+## Install
 
 Build and write the image to /dev/nbd1 (see [documentation](https://doc.cloud.online.net/howto/create_image.html))
 
