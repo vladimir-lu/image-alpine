@@ -4,6 +4,7 @@ VERSION_ALIASES =	3.2.3 3.2 3 edge
 TITLE =			Alpine Linux
 DESCRIPTION =		Alpine Linux
 SOURCE_URL =		https://github.com/scaleway/image-alpine
+VENDOR_URL =		http://www.alpinelinux.org
 
 IMAGE_VOLUME_SIZE =	50G
 IMAGE_BOOTSCRIPT =	stable
