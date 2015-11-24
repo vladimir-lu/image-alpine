@@ -16,6 +16,7 @@ ADD ./patches/etc/ /etc/
 RUN apk update \
  && apk add \
     bash \
+    busybox-suid \
     curl \
     openssh \
     tar \
