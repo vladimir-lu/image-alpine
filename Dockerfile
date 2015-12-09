@@ -1,5 +1,5 @@
 ## -*- docker-image-name: "scaleway/alpine:latest" -*-
-FROM armbuild/alpine:3.2.0
+FROM armbuild/alpine:3.3.0-rc1
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
