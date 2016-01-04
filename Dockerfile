@@ -28,7 +28,8 @@ RUN apk update \
     tar \
     wget \
  && apk upgrade \
-    openssl
+    openssl \
+ && rm -rf /var/cache/apk/*
 
 
 # Patch rootfs
