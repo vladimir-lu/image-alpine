@@ -8,5 +8,8 @@ sd*.raw*
 rootfs*
 */*.tar
 */*.built
+*.built
 .docker-container.built
 docker-rules.mk
+tmp-*/
+.overlays
