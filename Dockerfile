@@ -1,5 +1,11 @@
 ## -*- docker-image-name: "scaleway/alpine:latest" -*-
-FROM armbuild/alpine:3.3.0-rc1
+FROM multiarch/alpine:x86_64-v3.3
+# following 'FROM' lines are used dynamically thanks do the image-builder
+# which dynamically update the Dockerfile if needed.
+#FROM multiarch/alpine:armhf-v3.3   # arch=armv7l
+#FROM multiarch/alpine:x86-v3.3    # arch=i386
+
+
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
@@ -7,9 +13,9 @@ MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 ENV SCW_BASE_IMAGE scaleway/alpine:latest
 
 
-# Add cross-build binaries
-ADD ./patches/usr/ /usr/
-ADD ./patches/etc/ /etc/
+# Adding and calling builder-enter
+COPY ./overlay-image-tools/usr/local/sbin/builder-enter /usr/local/sbin/
+RUN /bin/sh -xe /usr/local/sbin/builder-enter
 
 
 # Install packages
@@ -26,12 +32,7 @@ RUN apk update \
 
 
 # Patch rootfs
-RUN curl -Lkq http://j.mp/scw-skeleton > /tmp/scw-scripts.bash \
- && DL=curl FLAVORS=openrc,common,docker-based bash -e /tmp/scw-scripts.bash \
- && rm -f /tmp/scw-scripts.bash \
- && /usr/local/sbin/builder-enter
-ADD ./patches/etc/ /etc/
-ADD ./patches/usr/ /usr/
+COPY ./overlay/ ./overlay-image-tools/ /
 
 
 # Configure autostart packages
