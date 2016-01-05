@@ -9,7 +9,7 @@ DEFAULT_IMAGE_ARCH =	x86_64
 
 IMAGE_VOLUME_SIZE =	50G
 IMAGE_BOOTSCRIPT =	stable
-IMAGE_NAME =		Alpine Linux 3.3.0_rc1
+IMAGE_NAME =		Alpine Linux 3.3
 
 # This is specific to distribution images
 # -- to fetch latest code, run 'make sync-image-tools'
