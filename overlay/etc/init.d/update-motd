@@ -2,15 +2,15 @@
 # Copyright (c) 2015 Scaleway <opensource@scaleway.com>
 # Released under the MIT license.
 
-description="SSHD keys"
+description="Update /etc/motd"
 
 depend() {
-    need root
-    after sshd
+    need net root
+    use dns
 }
 
 start() {
-    ebegin "Generating SSH host keys"
-    /usr/local/sbin/oc-generate-ssh-keys
+    ebegin "Generating /etc/motd"
+    run-parts /etc/update-motd.d/ > /etc/motd
     eend $?
 }

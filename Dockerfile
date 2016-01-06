@@ -41,6 +41,7 @@ RUN rc-update add sshd default\
  && rc-update add ssh-keys default \
  && rc-update add ntpd default \
  && rc-update add hostname default \
+ && rc-update add update-motd default \
  && rc-update add sysctl default \
  && rc-update add sync-kernel-extra default \
  && rc-update add initramfs-shutdown shutdown \
