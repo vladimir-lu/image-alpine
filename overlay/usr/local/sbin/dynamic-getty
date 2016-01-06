@@ -1,0 +1,11 @@
+#!/bin/sh
+# Spawn a getty process based on the configuration in /proc/cmdline
+
+# getting variables from /proc/cmdline
+console=$(cat /proc/cmdline | tr " " "\n" | grep ^console= | cut -d= -f2)
+tty=$(echo $console | cut -d, -f1)
+attrs=$(echo $console | cut -d, -f2)
+baud=$(echo $attrs | cut -dn -f1)
+
+# start getty
+exec /sbin/getty -L ${tty:-ttyS0} ${baud:-9600} vt220
