@@ -15,7 +15,7 @@ ENV SCW_BASE_IMAGE scaleway/alpine:latest
 
 # Adding and calling builder-enter
 COPY ./overlay-image-tools/usr/local/sbin/builder-enter /usr/local/sbin/
-RUN /bin/sh -xe /usr/local/sbin/builder-enter
+RUN /bin/sh -e /usr/local/sbin/scw-builder-enter
 
 
 # Install packages
@@ -38,13 +38,13 @@ COPY ./overlay/ ./overlay-image-tools/ /
 
 # Configure autostart packages
 RUN rc-update add sshd default\
- && rc-update add ssh-keys default \
+ && rc-update add scw-ssh-keys default \
  && rc-update add ntpd default \
  && rc-update add hostname default \
  && rc-update add update-motd default \
  && rc-update add sysctl default \
- && rc-update add sync-kernel-extra default \
- && rc-update add initramfs-shutdown shutdown \
+ && rc-update add scw-sync-kernel-extra default \
+ && rc-update add scw-initramfs-shutdown shutdown \
  && rc-status
 
 
