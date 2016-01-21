@@ -14,7 +14,7 @@ IMAGE_NAME =		Alpine Linux 3.3
 # This is specific to distribution images
 # -- to fetch latest code, run 'make sync-image-tools'
 IMAGE_TOOLS_FLAVORS =   openrc,common,docker-based
-IMAGE_TOOLS_CHECKOUT =  07beb109820121585b932d84d5c6089ccdb87698
+IMAGE_TOOLS_CHECKOUT =  2086abd6fcd71fa215ce76cc244af90651c3c6ae
 
 
 ##
