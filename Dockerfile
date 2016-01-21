@@ -14,7 +14,7 @@ ENV SCW_BASE_IMAGE scaleway/alpine:latest
 
 
 # Adding and calling builder-enter
-COPY ./overlay-image-tools/usr/local/sbin/builder-enter /usr/local/sbin/
+COPY ./overlay-image-tools/usr/local/sbin/scw-builder-enter /usr/local/sbin/
 RUN /bin/sh -e /usr/local/sbin/scw-builder-enter
 
 
@@ -53,4 +53,4 @@ RUN chmod 700 /root
 
 
 # Clean rootfs from image-builder
-RUN /usr/local/sbin/builder-leave
+RUN /usr/local/sbin/scw-builder-leave
