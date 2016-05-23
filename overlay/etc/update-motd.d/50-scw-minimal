@@ -10,13 +10,6 @@ if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
 fi
 
 date=`date`
-#load=`cat /proc/loadavg | awk '{print $1}'`
-#root_usage=`df -h / | awk '/\// {print $(NF-1)}'`
-#memory_usage=`free -m | awk '/Mem:/ { total=$2 } /buffers\/cache/ { used=$3 } END { printf("%3.1f%%", used/total*100)}'`
-#swap_usage=`free -m | awk '/Swap/ { printf("%3.1f%%", "exit !$2;$3/$2*100") }'`
-#users=`users | wc -w`
-#time=`uptime | grep -ohe 'up .*' | sed 's/,/\ hours/g' | awk '{ printf $2" "$3 }'`
-#processes=`ps aux | wc -l`
 ip=`ifconfig $(route | grep default | awk '{ print $8 }') | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}'`
 public_ip=$(scw-metadata --cached PUBLIC_IP_ADDRESS)
 
@@ -43,18 +36,20 @@ printf "\n"
 printf "System information as of: %s (boot time)\n" "$date"
 printf "\n"
 printf "Int IP Address:\t%s\tPub IP Address:\t%s\n" $ip $public_ip
-#printf "System load:\t%s\t\tInt IP Address:\t%s %s\n" $load $ip
-#printf "Memory usage:\t%s\t\tPub IP Address:\t%s\n" $memory_usage $public_ip
-#printf "Usage on /:\t%s\t\tSwap usage:\t%s\n" $root_usage $swap_usage
-#printf "Local Users:\t%s\t\tProcesses:\t%s\n" $users $processes
-#printf "Image build:\t%s\tSystem uptime:\t%s\n" "${IMAGE_RELEASE}" "$time"
 printf "Image build:\t%s\n" "${IMAGE_RELEASE}"
 
 for i in {0..16}; do
   metadata VOLUMES_${i} | grep " " >/dev/null || continue
 
   SIZE=$(( $(volume_metadata $i SIZE) / 1000 / 1000 / 1000 ))G
-  printf "Disk nbd%s:\t%s\n" "$i" "$(volume_metadata $i VOLUME_TYPE) ${SIZE}"
+
+  volume_export_uri="$(volume_metadata $i EXPORT_URI)"
+  if [ "$(echo "$volume_export_uri" | cut -d: -f1)" = "nbd" ]; then
+    device_name="nbd$i"
+  else
+    device_name="$(echo "$volume_export_uri" | sed s@device://dev/@@)"
+  fi
+  printf "Disk %s:\t%s\n" "$device_name" "$(volume_metadata $i VOLUME_TYPE) ${SIZE}"
 done
 printf "\n"
 
