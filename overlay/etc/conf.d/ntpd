@@ -1,1 +1,0 @@
-NTPD_OPTS="-N -p ntp.int.scaleway.com"

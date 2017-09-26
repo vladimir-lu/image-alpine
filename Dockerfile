@@ -48,7 +48,7 @@ COPY ./overlay/ ./overlay-image-tools/ /
 # Configure autostart packages
 RUN rc-update add sshd default\
  && rc-update add scw-ssh-keys default \
- && rc-update add ntpd default \
+ && rc-update add openntpd default \
  && rc-update add hostname default \
  && rc-update add update-motd default \
  && rc-update add sysctl default \
