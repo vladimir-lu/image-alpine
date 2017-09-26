@@ -1,15 +1,15 @@
 NAME =			alpine
 VERSION =		latest
-VERSION_ALIASES =	3.3.0 3.3 3 edge
+VERSION_ALIASES =	3.6 3 edge
 TITLE =			Alpine Linux
 DESCRIPTION =		Alpine Linux
-SOURCE_URL =		https://github.com/scaleway/image-alpine
+SOURCE_URL =		https://github.com/vladimir-lu/image-alpine
 VENDOR_URL =		http://www.alpinelinux.org
 DEFAULT_IMAGE_ARCH =	x86_64
 
 IMAGE_VOLUME_SIZE =	50G
 IMAGE_BOOTSCRIPT =	stable
-IMAGE_NAME =		Alpine Linux 3.3
+IMAGE_NAME =		Alpine Linux 3.6
 
 # This is specific to distribution images
 # -- to fetch latest code, run 'make sync-image-tools'

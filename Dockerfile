@@ -1,13 +1,9 @@
 ## -*- docker-image-name: "scaleway/alpine:latest" -*-
-FROM multiarch/alpine:x86_64-v3.3
+FROM multiarch/alpine:x86_64-v3.6
 # following 'FROM' lines are used dynamically thanks do the image-builder
 # which dynamically update the Dockerfile if needed.
-#FROM multiarch/alpine:armhf-v3.3   # arch=armv7l
-#FROM multiarch/alpine:x86-v3.3    # arch=i386
-
-
-MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
-
+#FROM multiarch/alpine:armhf-v3.6   # arch=armv7l
+#FROM multiarch/alpine:x86-v3.6    # arch=i386
 
 # Environment
 ENV SCW_BASE_IMAGE scaleway/alpine:latest
@@ -20,15 +16,28 @@ RUN /bin/sh -e /usr/local/sbin/scw-builder-enter
 
 # Install packages
 RUN apk update \
+ && apk upgrade \
  && apk add \
+    alpine-base \
     bash \
     busybox-suid \
     curl \
+    cryptsetup \
+    dnsmasq \
+    e2fsprogs \
+    eudev \
+    iptables \
+    ip6tables \
+    iproute2 \
+    iputils \
+    libressl \
     openssh \
+    openntpd \
+    pciutils \
+    sudo \
+    tor \
     tar \
     wget \
- && apk upgrade \
-    openssl \
  && rm -rf /var/cache/apk/*
 
 
